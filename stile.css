@@ -1,0 +1,50 @@
+:root{
+  --prim:#0066cc; --prim-2:#00bfff; --bg1:linear-gradient(135deg,#4A90E2,#003366);
+  --card-bg: rgba(255,255,255,0.07);
+  --muted: #dfefff;
+}
+*{box-sizing:border-box}
+body{
+  font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
+  background: var(--bg1);
+  color:#fff;
+  margin:0;padding:20px;min-height:100vh;display:flex;align-items:center;justify-content:center;
+}
+main{ width:100%; max-width:980px; }
+header{text-align:center;margin-bottom:12px}
+h1{ margin:0; color:var(--prim); font-size:1.6rem }
+p.lead{ color:var(--muted); margin:6px 0 14px; font-size:0.95rem }
+
+.container{ display:grid; grid-template-columns: 1fr 360px; gap:16px; align-items:start; }
+.card{ background:var(--card-bg); padding:14px; border-radius:10px; box-shadow:0 6px 18px rgba(0,0,0,0.12); }
+.left{ min-height:420px }
+.right .box{ margin-top:12px }
+
+.tabs{ display:flex; gap:8px; margin-bottom:12px; }
+.tab{ padding:8px 12px; border-radius:8px; background:var(--prim); color:#003; font-weight:700; cursor:pointer; border:2px solid rgba(0,0,0,0.05); }
+.tab.active{ background:var(--prim-2); color:#002 }
+
+.tab-content{ display:none }
+.tab-content.active{ display:block }
+
+label{ display:block; margin:8px 0 6px; font-weight:700; color:var(--muted) }
+input[type="text"], select, input[type="file"]{
+  width:100%; padding:10px; border-radius:8px; border:none; font-size:0.95rem;
+}
+.btn{ padding:10px 12px; border-radius:8px; border:none; cursor:pointer; font-weight:700; margin-top:8px }
+.btn.primary{ background:var(--prim-2); color:#003; width:100% }
+.btn.secondary{ background:#fff3; color:#003; padding:6px 8px; border-radius:6px; font-weight:700 }
+
+.resultado{ margin-top:10px; color:#e8f4ff; font-size:0.95rem }
+.foto img{ max-width:100%; border-radius:8px; margin-top:8px }
+
+.side-header{ display:flex; justify-content:space-between; align-items:center; gap:6px }
+.list.small{ margin-top:10px; color:#002; background:#fff; padding:8px; border-radius:8px; min-height:120px }
+
+.small{ font-size:0.9rem; color:#dfefff }
+.box.small{ background:rgba(255,255,255,0.03); padding:8px; border-radius:6px; margin-top:10px; color:#dfefff }
+
+@media (max-width:900px){
+  .container{ grid-template-columns: 1fr; }
+  .right{ order:2 }
+}

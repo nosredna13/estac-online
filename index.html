@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Controle de Estacionamento</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Firebase compat SDKs (necessários antes do script.js) -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-storage-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-analytics-compat.js"></script>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>Controle de Estacionamento</h1>
+      <p class="lead">Entrada / Saída / Pesquisa — placas por texto ou foto (opcional).</p>
+    </header>
+
+    <div class="container">
+      <section class="card left">
+        <div class="tabs">
+          <button class="tab active" data-target="entrada">Entrada</button>
+          <button class="tab" data-target="saida">Saída</button>
+          <button class="tab" data-target="pesquisa">Pesquisa</button>
+        </div>
+
+        <div id="entrada" class="tab-content active">
+          <label>Placa (texto) — ou deixe em branco e envie foto</label>
+          <input id="placaEntrada" type="text" placeholder="ABC1D23">
+
+          <label>Tipo de entrada</label>
+          <select id="tipoEntrada">
+            <option>Sem Parar</option>
+            <option>Veloe</option>
+            <option>ConectCar</option>
+            <option>Hotel</option>
+            <option>Avulso</option>
+          </select>
+
+          <label>Foto da placa (opcional)</label>
+          <input id="fotoEntrada" type="file" accept="image/*" capture="environment">
+
+          <button id="btnEntrada" class="btn primary">Registrar Entrada</button>
+
+          <div id="resEntrada" class="resultado"></div>
+        </div>
+
+        <div id="saida" class="tab-content">
+          <label>Placa (texto)</label>
+          <input id="placaSaida" type="text" placeholder="ABC1D23">
+
+          <label>Foto da placa na saída (opcional)</label>
+          <input id="fotoSaida" type="file" accept="image/*" capture="environment">
+
+          <button id="btnSaida" class="btn primary">Registrar Saída</button>
+
+          <div id="resSaida" class="resultado"></div>
+        </div>
+
+        <div id="pesquisa" class="tab-content">
+          <label>Pesquisar por placa</label>
+          <input id="placaBusca" type="text" placeholder="Digite a placa...">
+          <button id="btnBusca" class="btn primary">Pesquisar</button>
+          <div id="resBusca" class="resultado"></div>
+        </div>
+      </section>
+
+      <aside class="card right">
+        <div class="side-header">
+          <strong>Últimos registros</strong>
+          <button id="btnRefresh" class="btn secondary">Atualizar</button>
+        </div>
+        <div id="listaRegistros" class="list small">Carregando…</div>
+
+        <div class="box small">
+          <strong>Dicas</strong>
+          <ul>
+            <li>Placa pode ser digitada ou enviada por foto.</li>
+            <li>Se usar só foto, digite a placa no campo depois (o OCR não está incluído aqui).</li>
+            <li>Fotos salvas no Firebase Storage; dados no Firestore.</li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <!-- Aplicação JS -->
+  <script src="script.js" defer></script>
+</body>
+</html>
